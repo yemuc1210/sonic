@@ -119,6 +119,7 @@ func (a *Aliyun) GetFilePath(ctx context.Context, relativePath string) (string, 
 	if aliyunClientInstance.Domain != "" {
 		basePath = aliyunClientInstance.Protocol + aliyunClientInstance.Domain
 	}
+	// go1.18.3 失败；这是go1.19更新的吧
 	fullPath, _ := url.JoinPath(basePath, relativePath)
 	fullPath, _ = url.PathUnescape(fullPath)
 	return fullPath, nil
